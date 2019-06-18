@@ -1,14 +1,25 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Navigation logoText="Pokemon" />
     <router-view/>
   </div>
 </template>
 
+<script>
+import Navigation from '@/components/Navigation.vue'
+
+export default {
+  components: {
+    Navigation
+  }
+}
+</script>
+
 <style lang="scss">
+// My own variables. Make changes to Bulma variables here.
+@import "./scss/variables.scss";
+// Import Bulma for use in the entire project
+@import "~bulma/bulma.sass";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

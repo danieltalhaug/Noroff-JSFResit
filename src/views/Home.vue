@@ -6,13 +6,16 @@
       />
     </section>
     <main>
-      <div class="flex-direction">
-      <div class="" v-for="(value, index) in cards.cards" :key="index">
-        <PokemonCard  v-bind:image="value.imageUrl"
-                      v-bind:name="value.name"
-        />
-      </div>
-      </div>
+      <section>
+        
+      </section>
+      <section class="flex-direction">
+        <div class="" v-for="(value, index) in cards.cards" :key="index">
+          <PokemonCard  v-bind:image="value.imageUrl"
+                        v-bind:name="value.name"
+          />
+        </div>
+      </section>
     </main>
   </div>
 </template>

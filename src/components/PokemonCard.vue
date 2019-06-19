@@ -1,6 +1,6 @@
 <template>
     <figure class="">
-        <img class="pokemon-card" :src="image" :alt="name + 'pokemon card'">
+        <img class="pokemon-card" :src="image" :alt="name + ' pokemon card'">
     </figure>
 </template>
 <script>
@@ -16,6 +16,15 @@ export default {
 .pokemon-card {
     border-radius: $border-radius-small;
     box-shadow: 1px 5px 5px rgba(0,0,0,.4);
+    transition: .1s;
+    &:hover {
+        cursor: pointer;
+        transform: translateY(-10px);
+    }
+    &:active {
+        transform: translateY(-7px);
+        box-shadow: 1px 1px 1px rgba(0,0,0,.8);
+    }
 }
 figure {
     margin: 1rem;

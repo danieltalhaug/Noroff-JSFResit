@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navigation logoText="Pokemon" />
+    <Navigation logoText="Pokémon" />
     <router-view/>
   </div>
 </template>

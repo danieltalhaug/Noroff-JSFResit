@@ -7,30 +7,32 @@
         </section>
         <section class="columns">
             <div class="column box">
-                <div class="banner banner__background banner__background--pokemon">
+                <div class="banner banner__background banner__background--pokemon"></div>
+            </div>
+            <div v-if="form.success" class="column box center">
+                <div class="title-container center-item">
+                    <h3 class="title has-text-info">{{ this.formSent.title }}</h3>
+                    <h4 class="subtitle">{{ this.formSent.subTitle }}</h4>
                 </div>
             </div>
-            <div class="column box">
+            <div v-else class="column box">
                 <ContactForm    
                                 v-on:getNameInput="setNameInputValue"
                                 v-bind:nameLabel="this.form.name.label"
                                 v-bind:nameSuccess="this.form.name.success"
                                 v-bind:nameRequired="this.form.name.required"
-                                v-bind:nameError="this.form.name.error"
                                 v-bind:nameErrorText="this.form.name.errorText"
 
                                 v-on:getNumberInput="setNumberInputValue"
                                 v-bind:numberLabel="this.form.number.label"
                                 v-bind:numberSuccess="this.form.number.success"
                                 v-bind:numberRequired="this.form.number.required"
-                                v-bind:numberError="this.form.number.error"
                                 v-bind:numberErrorText="this.form.number.errorText"
 
                                 v-on:getSubjectInput="setSubjectInputValue"
                                 v-bind:subjectLabel="this.form.subject.label"
                                 v-bind:subjectSuccess="this.form.subject.success"
                                 v-bind:subjectRequired="this.form.subject.required"
-                                v-bind:subjectError="this.form.subject.error"
                                 v-bind:subjectErrorText="this.form.subject.errorText"
                                 v-bind:subjectOptions="this.form.subject.options"
 
@@ -38,7 +40,6 @@
                                 v-bind:messageLabel="this.form.message.label"
                                 v-bind:messageSuccess="this.form.message.success"
                                 v-bind:messageRequired="this.form.message.required"
-                                v-bind:messageError="this.form.message.error"
                                 v-bind:messageErrorText="this.form.message.errorText"
 
                                 v-on:verify="validateForm"
@@ -64,13 +65,17 @@ export default {
                 title: 'Contact us',
                 subTitle: 'Send us a message, compliment, enquiry or complaint. We\'ll be happy to hear from you!'
             },
+            formSent: {
+                title: 'Form sent!',
+                subTitle: 'We appreciate you getting in touch with us and we\'ll get back to you soon'
+            },
             form: {
+                success: false,
                 name: {
                     input: "",
                     label: 'Name',
                     success: false,
                     required: false,
-                    error: false,
                     errorText: 'Please enter your name'
                 },
                 number: {
@@ -78,15 +83,13 @@ export default {
                     label: 'Number',
                     success: false,
                     required: false,
-                    error: false,
-                    errorText: 'Please enter a valid phone number'
+                    errorText: 'Please enter a valid phone number, for example: 123-45-678'
                 },
                 subject: {
                     input: "",
                     label: 'Subject',
                     success: false,
                     required: false,
-                    error: false,
                     errorText: 'Please select an option',
                     options: [
                         'General Message',
@@ -100,7 +103,6 @@ export default {
                     label: 'Message',
                     success: false,
                     required: false,
-                    error: false,
                     errorText: 'Please enter your message'
                 }
             }
@@ -122,18 +124,15 @@ export default {
         verifyName: function() {
             if(!this.form.name.input) {
                 this.form.name.required = true;
-                this.form.name.error = false;
                 this.form.name.success = false;
             } else {
                 const nameRegex = /^[a-zA-Z ,.'-]{2,}$/;
                 const testResult = nameRegex.test(this.form.name.input);
                 if(!testResult) {
-                    this.form.name.required = false;
-                    this.form.name.error = true;
+                    this.form.name.required = true;
                     this.form.name.success = false;
                 } else {
                     this.form.name.required = false;
-                    this.form.name.error = false;
                     this.form.name.success = true;
                 }
             }
@@ -141,18 +140,15 @@ export default {
         verifyPhone: function() {
             if(!this.form.number.input) {
                 this.form.number.required = true;
-                this.form.number.error = false;
                 this.form.number.success = false;
             } else {
-                const nameRegex = /^[a-zA-Z ,.'-]{2,}$/;
+                const nameRegex = /^\d{3}-\d{2}-\d{3}$/;
                 const testResult = nameRegex.test(this.form.number.input);
                 if(!testResult) {
-                    this.form.number.required = false;
-                    this.form.number.error = true;
+                    this.form.number.required = true;
                     this.form.number.success = false;
                 } else {
                     this.form.number.required = false;
-                    this.form.number.error = false;
                     this.form.number.success = true;
                 }
             }
@@ -160,39 +156,19 @@ export default {
         verifySubject: function() {
             if(!this.form.subject.input) {
                 this.form.subject.required = true;
-                this.form.subject.error = false;
                 this.form.subject.success = false;
             } else {
-                const nameRegex = /^[a-zA-Z ,.'-]{2,}$/;
-                const testResult = nameRegex.test(this.form.subject.input);
-                if(!testResult) {
-                    this.form.subject.required = false;
-                    this.form.subject.error = true;
-                    this.form.subject.success = false;
-                } else {
-                    this.form.subject.required = false;
-                    this.form.subject.error = false;
-                    this.form.subject.success = true;
-                }
+                this.form.subject.required = false;
+                this.form.subject.success = true;
             }
         },
         verifyMessage: function() {
             if(!this.form.message.input) {
                 this.form.message.required = true;
-                this.form.message.error = false;
                 this.form.message.success = false;
             } else {
-                const nameRegex = /^[a-zA-Z ,.'-]{2,}$/;
-                const testResult = nameRegex.test(this.form.message.input);
-                if(!testResult) {
-                    this.form.message.required = false;
-                    this.form.message.error = true;
-                    this.form.message.success = false;
-                } else {
-                    this.form.message.required = false;
-                    this.form.message.error = false;
-                    this.form.message.success = true;
-                }
+                this.form.message.required = false;
+                this.form.message.success = true;
             }
         },
         validateForm: function() {
@@ -201,8 +177,9 @@ export default {
                 this.verifyPhone();
                 this.verifySubject();
                 this.verifyMessage();
+            } else {
+                this.form.success = true;
             }
-            return true;
         }
     }
 }
@@ -214,11 +191,13 @@ export default {
 .box {
     margin: .3rem !important;
     padding: 0 !important;
-    overflow: hidden; 
+    overflow: hidden;
+    min-height: 600px;
 }
 .banner {
     &__background {
         background-color: #eee;
+        min-height: 600px;
         height: 100%;
         background-position: center;
         background-repeat: no-repeat;
@@ -229,7 +208,16 @@ export default {
         }
     }
 }
-.samesize {
-    flex: 1;
+.form-container
+.title-container {
+    padding-top: 0;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-item {
+      max-width: 50%;
+  }
 }
 </style>

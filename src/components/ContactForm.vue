@@ -3,48 +3,50 @@
 
             <div class="field">
                 <label class="label has-text-info">{{ nameLabel }}</label>
-                <div class="control">
+                <div class="control has-text-left">
                     <input  v-model="userNameInput"
                             v-on:keyup="sendNameInput"
                             class="input is-info"
                             v-bind:class="{ 'is-success': nameSuccess, 'is-danger': nameRequired }" 
                             type="text" 
                             :placeholder="nameLabel">
+                    <p v-if="nameRequired" class="help is-danger">Required</p>
+                    <p v-if="nameRequired" class="help is-danger">{{ nameErrorText }}</p>
                 </div>
-                <p v-if="nameRequired" class="help is-danger">Required</p>
-                <p v-if="nameError" class="help is-danger">{{ nameErrorText }}</p>
+                
             </div>
 
             <div class="field">
                 <label class="label has-text-info">{{ numberLabel }}</label>
-                <div class="control">
+                <div class="control has-text-left">
                     <input  v-model="userPhoneInput"
                             v-on:keyup="sendNumberInput"
                             class="input is-info"
                             v-bind:class="{ 'is-success': numberSuccess, 'is-danger': numberRequired }"
                             type="text"
                             placeholder="Text input">
+                    <p v-if="numberRequired" class="help is-danger">Required</p>
+                    <p v-if="numberRequired" class="help is-danger">{{ numberErrorText }}</p>
                 </div>
-                <p v-if="numberRequired" class="help is-danger">Required</p>
-                <p v-if="numberError" class="help is-danger">{{ numberErrorText }}</p>
+                
             </div>
 
             <div class="field">
                 <label class="label has-text-info">{{ subjectLabel }}</label>
-                <div class="control">
+                <div class="control has-text-left">
                     <div class="select is-info" v-bind:class="{ 'is-success': subjectSuccess, 'is-danger': subjectRequired }">
                     <select v-model="userSubjectInput" v-on:click="sendSubjectInput">
                         <option v-for="(option, index) in subjectOptions" v-bind:key="index">{{ option }}</option>
                     </select>
                     </div>
                     <p v-if="subjectRequired" class="help is-danger">Required</p>
-                    <p v-if="subjectError" class="help is-danger">{{ subjectErrorText }}</p>
+                    <p v-if="subjectRequired" class="help is-danger">{{ subjectErrorText }}</p>
                 </div>
             </div>
 
             <div class="field">
                 <label class="label has-text-info">{{ messageLabel }}</label>
-                <div class="control">
+                <div class="control has-text-left">
                     <textarea   v-model="userMessageInput"
                                 v-on:keyup="sendMessageInput"
                                 class="textarea is-info"
@@ -54,7 +56,7 @@
                                 >
                     </textarea>
                     <p v-if="messageRequired" class="help is-danger">Required</p>
-                    <p v-if="messageError" class="help is-danger">{{ messageErrorText }}</p>
+                    <p v-if="messageRequired" class="help is-danger">{{ messageErrorText }}</p>
                 </div>
             </div>
 
@@ -75,23 +77,19 @@ export default {
         'nameLabel',
         'nameSuccess',
         'nameRequired',
-        'nameError',
         'nameErrorText',
         'numberLabel',
         'numberSuccess',
         'numberRequired',
-        'numberError',
         'numberErrorText',
         'subjectLabel',
         'subjectSuccess',
         'subjectRequired',
-        'subjectError',
         'subjectErrorText',
         'subjectOptions',
         'messageLabel',
         'messageSuccess',
         'messageRequired',
-        'messageError',
         'messageErrorText',
         'verify'
         ],

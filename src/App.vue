@@ -11,7 +11,11 @@ import Navigation from '@/components/Navigation.vue'
 export default {
   components: {
     Navigation
-  }
+  },
+   beforeMount: function() {
+    // Fire off the get pokemon cards in vuex store
+    this.$store.dispatch('getPokemonCards');
+  },
 }
 </script>
 

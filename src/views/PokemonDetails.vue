@@ -5,7 +5,7 @@
                     v-bind:subTitle="'Pokedex number: ' + $route.params.pokedex" 
             />
         </section>
-        <section class="columns">
+        <section v-if="$route.params.supertype === 'Pokémon'" class="columns">
             <PokemonHeader  v-bind:type="$route.params.type"
                             v-bind:image="$route.params.image"
                             v-bind:name="$route.params.name"

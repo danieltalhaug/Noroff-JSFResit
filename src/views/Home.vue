@@ -20,7 +20,8 @@
                           name: value.name,
                           pokedex: value.nationalPokedexNumber,
                           image: value.imageUrl,
-                          type: value.types, // array
+                          type: value.types,
+                          supertype: value.supertype,
                           subtype: value.subtype,
                           hp: value.hp,
                           number: value.number,

@@ -1,8 +1,8 @@
 <template>
-    <div class="column">
+    <div class="column margin">
         <div>
-            <h2 class="title is-2 has-text-info">{{ title }}</h2>
-            <h3 class="subtitle is-4">{{ subTitle }}</h3>
+            <h1 class="title is-1 has-text-info">{{ title }}</h1>
+            <h2 class="subtitle is-4">{{ subTitle }}</h2>
         </div>
     </div>
 </template>
@@ -17,4 +17,13 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+// Import scss variables
+@import "./../scss/variables.scss";
+// scss
+.margin {
+    margin: 2rem 0 2rem 0;
+}
+</style>
+
 

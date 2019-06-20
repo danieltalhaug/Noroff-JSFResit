@@ -1,6 +1,6 @@
 <template>
     <main class="container">
-        <section class="section columns">
+        <section class="columns">
             <Title  v-bind:title="this.header.title"
                     v-bind:subTitle="this.header.subTitle"
                     />

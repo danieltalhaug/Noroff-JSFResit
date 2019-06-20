@@ -1,14 +1,23 @@
 <template>
     <main>
         <section>
-            <Title  v-bind:title="$route.params.name"
-                    v-bind:subTitle="'Pokedex number: ' + $route.params.pokedex" 
+            <Title  :title="$route.params.name"
             />
         </section>
         <section v-if="$route.params.supertype === 'Pokémon'" class="columns">
-            <PokemonHeader  v-bind:type="$route.params.type"
-                            v-bind:image="$route.params.image"
-                            v-bind:name="$route.params.name"
+            <PokemonHeader  :type="$route.params.type"
+                            :image="$route.params.image"
+                            :name="$route.params.name"
+            />
+        </section>
+        <section v-else-if="$route.params.supertype === 'Trainer'" class="columns">
+            <TrainerHeader  :name="$route.params.name"
+                            :image="$route.params.image"
+            />
+        </section>
+        <section v-else class="columns">
+            <EnergyHeader   :name="$route.params.name"
+                            :image="$route.params.image"
             />
         </section>
     </main>
@@ -16,12 +25,17 @@
 <script>
 // Imports
 import Title from './../components/Title.vue'
-import PokemonHeader from './../components/PokemonHeader.vue'
+import PokemonHeader from './../components/Pokemon/PokemonHeader.vue'
+import TrainerHeader from './../components/Trainer/TrainerHeader.vue'
+import EnergyHeader from './../components/Energy/EnergyHeader.vue'
+
 export default {
     name: 'PokemonDetails',
     components: {
         Title,
-        PokemonHeader
+        PokemonHeader,
+        TrainerHeader,
+        EnergyHeader
     },
 }
 </script>

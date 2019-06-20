@@ -65,12 +65,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 // Import scss variables
-@import "./../scss/variables.scss";
+@import "./../../scss/variables.scss";
 // scss
 .card-container {
     &__background {
-        margin: 1rem 0 1rem 0;
-        padding: 5rem 0 5rem 0;
+        margin: $header-margin;
+        padding: $header-padding;
         &--lightning {
             background: $lightning-bright;
             background: radial-gradient(circle, $lightning-bright 0%, $lightning-dark 100%);

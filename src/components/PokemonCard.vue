@@ -20,6 +20,7 @@ export default {
     &:hover {
         cursor: pointer;
         transform: translateY(-10px);
+        box-shadow: 1px 15px 15px rgba(0,0,0,.4);
     }
     &:active {
         transform: translateY(-7px);

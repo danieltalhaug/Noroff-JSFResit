@@ -6,27 +6,29 @@
       />
     </section>
     <main>
-      <section class="section">
+      <section>
         <Searchbar  v-on:getSearchWord="setSearchInputValue"
                     v-bind:placeholder="search.searchbarPlaceholder"
         />
       </section>
-      <section v-if="filterPokemon.length" class="flex-direction">
+      <section v-if="filterPokemon.length" class="flex-direction cards-container">
         <div class="" v-for="(value, index) in filterPokemon" :key="index">
           <router-link  :to="{
                         name: 'pokemondetails',
                         params: {
                           id: value.id,
                           name: value.name,
-                          pokedex: value.nationalPokedexNumber,
                           image: value.imageUrl,
-                          type: value.types,
                           supertype: value.supertype,
                           subtype: value.subtype,
-                          hp: value.hp,
                           number: value.number,
                           artist: value.artist,
                           rarity: value.rarity,
+                          pokedex: value.nationalPokedexNumber,
+                          type: value.types,
+                          series: value.series,
+                          hp: value.hp,
+                          text: value.text,
             }}">
             <PokemonCard  v-bind:image="value.imageUrl"
                           v-bind:name="value.name"
@@ -97,6 +99,9 @@ export default {
 .flex-direction {
   display: flex;
   flex-wrap: wrap;
+}
+.cards-container {
+  padding: 2rem 0 0 0;
 }
 </style>
 

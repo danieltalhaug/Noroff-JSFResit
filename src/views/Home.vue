@@ -11,19 +11,31 @@
                     v-bind:placeholder="search.searchbarPlaceholder"
         />
       </section>
-      <section class="flex-direction">
+      <section v-if="filterPokemon.length" class="flex-direction">
         <div class="" v-for="(value, index) in filterPokemon" :key="index">
-          <PokemonCard  v-bind:image="value.imageUrl"
-                        v-bind:name="value.name"
-          />
+          <router-link  :to="{
+                        name: 'pokemondetails',
+                        params: {
+                          id: value.id,
+                          name: value.name,
+                          image: value.imageUrl,
+            }}">
+            <PokemonCard  v-bind:image="value.imageUrl"
+                          v-bind:name="value.name"
+            />
+          </router-link>
         </div>
+      </section>
+      <section v-else>
+        <h4 class="title is-4">Sorry, could not find that one.</h4>
+        <h5 class="subtitle is-6">Please try again</h5>
       </section>
     </main>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+// imports
 import Title from './../components/Title.vue'
 import Searchbar from './../components/Searchbar.vue'
 import PokemonCard from './../components/PokemonCard.vue'

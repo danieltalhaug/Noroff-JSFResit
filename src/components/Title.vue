@@ -1,7 +1,7 @@
 <template>
     <div class="column">
         <div>
-            <h2 class="title is-2">{{ title }}</h2>
+            <h2 class="title is-2 has-text-info">{{ title }}</h2>
             <h3 class="subtitle is-4">{{ subTitle }}</h3>
         </div>
     </div>

@@ -8,8 +8,8 @@
     <main>
       <section class="section">
         <Searchbar  v-on:getSearchWord="setSearchInputValue"
+                    v-bind:placeholder="search.searchbarPlaceholder"
         />
-        <p>{{ this.search }}</p>
       </section>
       <section class="flex-direction">
         <div class="" v-for="(value, index) in filterPokemon" :key="index">
@@ -37,24 +37,27 @@ export default {
   },
   data() {
     return {
-      search: '',
+      search: {
+        input: "",
+        searchbarPlaceholder: 'Pikachu'
+      },
       pokemonCards: [],
       title: {
-        title: 'All pokémon',
-        subTitle: 'search for a pokemon',
+        title: 'All Pokémon',
+        subTitle: 'Type in a Pokémon name below',
       }
     }
   },
   computed: {
         filterPokemon: function() {
           return this.pokemonCards.filter(value => {
-            return value.name.toLowerCase().includes(this.search.toLowerCase())
+            return value.name.toLowerCase().includes(this.search.input.toLowerCase())
             })
         }
   },
   methods: {
     setSearchInputValue (value) {
-          this.search = value;
+          this.search.input = value;
       },
   },
   beforeMount: function() {

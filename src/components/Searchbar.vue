@@ -3,10 +3,7 @@
         <div class="column is-offset-4 is-one-third">
             <div class="field has-addons">
                 <div class="control searchbar--fullwidth">
-                    <input v-model="searchWord" v-on:keyup="sendSearchWord" class="input is-info is-medium" type="text" placeholder="Search for a pokemon">
-                </div>
-                <div class="control">
-                    <a class="button is-medium is-info">Search</a>
+                    <input v-model="searchWord" v-on:keyup="sendSearchWord" class="input is-info is-medium is-rounded" type="text" :placeholder="placeholder">
                 </div>
             </div>
         </div>
@@ -15,6 +12,9 @@
 <script>
 export default {
     name: 'Searchbar',
+    props: [
+        'placeholder'
+    ],
     data() {
         return {
             searchWord: ''

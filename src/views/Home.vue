@@ -18,7 +18,14 @@
                         params: {
                           id: value.id,
                           name: value.name,
+                          pokedex: value.nationalPokedexNumber,
                           image: value.imageUrl,
+                          type: value.types, // array
+                          subtype: value.subtype,
+                          hp: value.hp,
+                          number: value.number,
+                          artist: value.artist,
+                          rarity: value.rarity,
             }}">
             <PokemonCard  v-bind:image="value.imageUrl"
                           v-bind:name="value.name"
@@ -72,12 +79,12 @@ export default {
           this.search.input = value;
       },
   },
-  beforeMount: function() {
+  created: function() {
     // Fire off the get pokemon cards in vuex store
-    // this.$store.dispatch('getPokemonCards');
+    this.$store.dispatch('getPokemonCards');
     // get the pokemonCards array from vuex and set it to cards array on this page
   },
-  mounted: function() {
+  beforeMount: function() {
     this.pokemonCards = this.$store.state.pokemonCards.cards;
   }
 }

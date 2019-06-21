@@ -15,6 +15,15 @@
                 <Details        :type="$route.params.type"
                                 :image="$route.params.image"
                                 :name="$route.params.name"
+                                :subtype="$route.params.subtype"
+                                :hp="$route.params.hp"
+                                :pokedex="$route.params.pokedex"
+                                :rarity="$route.params.rarity"
+                                :series="$route.params.series"
+                                :artist="$route.params.artist"
+                                :attacks="$route.params.attacks"
+                                :weaknesses="$route.params.weaknesses[0]"
+                               
                 />
             </div>
         </section>
@@ -72,6 +81,8 @@ export default {
         EnergyHeader,
         Details
     },
+    created() {
+    }
 }
 </script>
 <style lang="scss" scoped>

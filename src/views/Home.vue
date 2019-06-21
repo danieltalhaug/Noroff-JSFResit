@@ -29,6 +29,8 @@
                           series: value.series,
                           hp: value.hp,
                           text: value.text,
+                          attacks: value.attacks,
+                          weaknesses: value.weaknesses
             }}">
             <PokemonCard  v-bind:image="value.imageUrl"
                           v-bind:name="value.name"

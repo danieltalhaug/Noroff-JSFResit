@@ -2,15 +2,18 @@
   <div id="app">
     <Navigation logoText="Pokémon" />
     <router-view/>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navigation from '@/components/Navigation.vue'
+import Footer from '@/components/Footer.vue'
 
 export default {
   components: {
-    Navigation
+    Navigation,
+    Footer
   },
    beforeMount: function() {
     // Fire off the get pokemon cards in vuex store

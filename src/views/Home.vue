@@ -12,7 +12,7 @@
         />
       </section>
       <section v-if="filterPokemon.length" class="flex-direction cards-container">
-        <div class="" v-for="(value, index) in filterPokemon" :key="index">
+        <div class="" v-for="(value, index) in filterGrassPokemon" :key="index">
           <router-link  :to="{
                         name: 'pokemondetails',
                         params: {
@@ -41,7 +41,7 @@
       <section v-else>
         <h4 class="title is-4">Sorry, could not find that one.</h4>
         <h5 class="subtitle is-6">Please try again</h5>
-      </section>
+      </section><!-- This section shows if filteredPokemon length is empty -->
     </main>
   </div>
 </template>
@@ -77,6 +77,11 @@ export default {
           return this.pokemonCards.filter(value => {
             return value.name.toLowerCase().includes(this.search.input.toLowerCase())
             })
+        },
+        filterGrassPokemon: function() {
+          return this.pokemonCards.filter(value => {
+            return value.types && value.types.includes("Grass");
+          });
         }
   },
   methods: {

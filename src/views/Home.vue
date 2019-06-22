@@ -12,7 +12,7 @@
         />
       </section>
       <section v-if="filterPokemon.length" class="flex-direction cards-container">
-        <div class="" v-for="(value, index) in filterGrassPokemon" :key="index">
+        <div class="" v-for="(value, index) in filterPokemon" :key="index">
           <router-link  :to="{
                         name: 'pokemondetails',
                         params: {
@@ -90,13 +90,9 @@ export default {
       },
   },
   created: function() {
-    // Fire off the get pokemon cards in vuex store
-    this.$store.dispatch('getPokemonCards');
     // get the pokemonCards array from vuex and set it to cards array on this page
-  },
-  beforeMount: function() {
     this.pokemonCards = this.$store.state.pokemonCards.cards;
-  }
+  },
 }
 </script>
 <style lang="scss" scoped>
